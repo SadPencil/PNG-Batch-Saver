@@ -55,11 +55,33 @@ public class MainViewModel : ViewModelBase
             }
             try
             {
-                using var image = await Image.LoadAsync(path);
-                await image.SaveAsPngAsync(path, encoder);
-                success++;
+                var dir = Path.GetDirectoryName(path) ?? Path.GetTempPath();
+                var tmp = Path.Combine(dir, Path.GetRandomFileName() + ".tmp");
+                try
+                {
+                    using (var image = await Image.LoadAsync(path))
+                    {
+                        await image.SaveAsPngAsync(tmp, encoder);
+                    }
+                    File.Move(tmp, path, overwrite: true);
+                    success++;
+                }
+                catch
+                {
+                    if (File.Exists(tmp))
+                        File.Delete(tmp);
+                    throw;
+                }
             }
-            catch
+            catch (IOException)
+            {
+                failed++;
+            }
+            catch (UnauthorizedAccessException)
+            {
+                failed++;
+            }
+            catch (ImageFormatException)
             {
                 failed++;
             }
