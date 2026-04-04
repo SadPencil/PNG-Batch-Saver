@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="PNGBatchSaver.Desktop/PNGBatchSaver.Desktop.csproj" />
+  <Project Path="PNGBatchSaver/PNGBatchSaver.csproj" />
+</Solution>
