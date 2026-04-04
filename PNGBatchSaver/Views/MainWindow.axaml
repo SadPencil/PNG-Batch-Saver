@@ -4,9 +4,11 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:views="clr-namespace:PNGBatchSaver.Views"
-        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        mc:Ignorable="d" d:DesignWidth="500" d:DesignHeight="320"
         x:Class="PNGBatchSaver.Views.MainWindow"
         Icon="/Assets/avalonia-logo.ico"
-        Title="PNGBatchSaver">
+        Title="PNG Batch Saver"
+        Width="500" Height="320"
+        CanResize="True">
         <views:MainView />
 </Window>
